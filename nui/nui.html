@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./script.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="location">
+        <div class="position">
+            My position: X=<span id="pos-x-output">N/A</span>, Y=<span id="pos-y-output">N/A</span>, Z=<span
+                id="pos-z-output">N/A</span>
+        </div>
+        <div class="heading">
+            My heading: <span id="heading-output">N/A</span>
+        </div>
+        <div class="destination">
+            <span>Teleport to:</span>
+            <div class="positions">
+                <div class="pos-x">
+                    <strong>X:</strong><input type="text" id="destination-x" />
+                </div>
+                <div class="pos-y">
+                    <strong>Y:</strong><input type="text" id="destination-y" />
+                </div>
+                <div class="pos-z">
+                    <strong>Z:</strong><input type="text" id="destination-z" />
+                </div>
+            </div>
+
+            <div class="btns">
+                <button type="button" id="destination-teleport">Teleport</button>
+                <button type="button" id="destination-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

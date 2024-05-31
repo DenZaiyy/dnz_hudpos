@@ -1,0 +1,97 @@
+body {
+    display: none;
+}
+
+.location {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 25px;
+    color: white;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    width: auto;
+    max-width: 800px;
+
+    .position {
+        display: flex;
+        align-items: center;
+
+        & > span {
+            font-weight: bold;
+        }
+    }
+
+    .actions {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+
+        & > button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background: #2c3e50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s;
+
+            &:hover {
+                background: #34495e;
+            }
+        }
+    }
+
+    .destination {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+
+        .positions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+
+            .pos-x,
+            .pos-y,
+            .pos-z {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: 5px;
+
+                & > input {
+                    padding: 5px;
+                    border: none;
+                    border-radius: 5px;
+                    background: #2c3e50;
+                    color: white;
+                    font-size: 16px;
+                    width: 100%;
+                }
+            }
+        }
+
+        .btns {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+
+            & > button {
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                background: #2c3e50;
+                color: white;
+                font-size: 16px;
+                cursor: pointer;
+                transition: background 0.2s;
+                width: 100%;
+
+                &:hover {
+                    background: #34495e;
+                }
+            }
+        }
+    }
+}
