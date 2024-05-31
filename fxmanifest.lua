@@ -4,8 +4,9 @@ lua54 'yes'
 
 -- Infos
 author 'DenZaiyy'
-description 'A simple NUI made by DenZaiyy'
-version '1.0.0'
+description 'A simple NUI HUD for coords made by DenZaiyy'
+version '1.5.0'
+repository 'https://github.com/DenZaiyy/dnz_hudpos'
 
 -- Shared Scripts
 shared_script {
@@ -16,16 +17,13 @@ shared_script {
 }
 
 -- Client Scripts
-client_scripts {
-    'client/client.lua'
-}
+client_script 'client/client.lua'
 
 -- NUI
-ui_page 'nui/nui.html'
+ui_page 'web/index.html'
 
 files {
-    'nui/nui.html',
-    'nui/styles.css',
-    'nui/script.js',
-    'nui/images/*',
+    'web/index.html',
+    'web/script.js',
+    'web/styles.css',
 }

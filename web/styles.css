@@ -1,0 +1,99 @@
+body {
+    display: none;
+    margin-top: 10px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.location {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    color: white;
+    border: 0.5px solid #2c3e50;
+    border-radius: 10px;
+    font-size: 18px;
+    font-family: sans-serif;
+    width: auto;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.position {
+    display: flex;
+    align-items: center;
+}
+
+.position span,
+.heading span {
+    font-weight: bold;
+}
+
+.destination {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.destination h2 {
+    font-size: 18px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+.positions {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+.pos-x,
+.pos-y,
+.pos-z {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+}
+
+.pos-x input,
+.pos-y input,
+.pos-z input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    background: #2c3e50;
+    color: white;
+    font-size: 16px;
+    width: 100%;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.btns button {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background: #2c3e50;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.2s;
+    width: 100%;
+}
+.btns button:hover {
+    background: #34495e;
+}
+
+hr {
+    margin: 20px 0;
+    border: none;
+    border-top: 1px solid #2c3e50;
+}

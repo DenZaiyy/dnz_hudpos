@@ -1,10 +1,10 @@
 local state = false
 local openHud = false
 ESX = exports["es_extended"]:getSharedObject()
+
 --
 -- Function Toggle Position
 --
-
 local function togglePosition()
     if not state then
         CreateThread(function()
@@ -36,6 +36,9 @@ local function togglePosition()
     end
 end
 
+--
+-- Function Focus HUD
+--
 local function focusHUD()
     if state then
         if openHud then
@@ -46,39 +49,40 @@ local function focusHUD()
             openHud = not openHud
         end
     else
-        ESX.ShowNotification(TranslateCap('hud_need_openned'), 'error')
+        -- ESX.ShowNotification(TranslateCap('hud_need_openned'), 'error')
+        ESX.ShowNotification('HUD need to be opened', 'error')
     end
 end
 
 --
 -- NUI Callbacks
 --
-
 RegisterNUICallback('releaseFocus', function(data, cb)
-    cb({})
+    if data.error then
+        togglePosition()
+        ESX.ShowNotification(data.error, 'error')
+    end
     openHud = not openHud
     SetNuiFocus(false, false)
 end)
 
 RegisterNUICallback('teleport', function(data, cb)
-    cb({})
-
+    ExecuteCommand('focusHUD')
     SetEntityCoords(PlayerPedId(), tonumber(data.x), tonumber(data.y), tonumber(data.z))
 end)
 
 --
 -- Key Bindings
 --
+if Config.Enable_Command then
+    RegisterCommand('focusHUD', function()
+        focusHUD()
+    end)
+    RegisterKeyMapping('focusHUD', 'Focus NUI for position panel', 'keyboard', 'DIVIDE')
 
-RegisterCommand('focusHUD', function()
-    focusHUD()
-end, true)
 
-RegisterKeyMapping('focusHUD', 'Focus NUI for position panel', 'keyboard', 'DIVIDE')
-
-
-RegisterCommand('togglePosition', function()
-    togglePosition()
-end, true)
-
-RegisterKeyMapping('togglePosition', 'Toggle position HUD', 'keyboard', 'PAGEDOWN')
+    RegisterCommand('togglePosition', function()
+        togglePosition()
+    end)
+    RegisterKeyMapping('togglePosition', 'Toggle position HUD', 'keyboard', 'PAGEDOWN')
+end

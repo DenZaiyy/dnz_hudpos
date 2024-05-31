@@ -25,10 +25,20 @@ document.addEventListener("DOMContentLoaded", () => {
     document
         .getElementById("destination-teleport")
         .addEventListener("click", () => {
-            axios.post(`https://${GetParentResourceName()}/teleport`, {
-                x: document.getElementById("destination-x").value,
-                y: document.getElementById("destination-y").value,
-                z: document.getElementById("destination-z").value,
-            });
+            let x = document.getElementById("destination-x").value;
+            let y = document.getElementById("destination-y").value;
+            let z = document.getElementById("destination-z").value;
+
+            if (x === "" || y === "" || z === "") {
+                axios.post(`https://${GetParentResourceName()}/releaseFocus`, {
+                    error: "Please enter a valid destination.",
+                });
+            } else {
+                axios.post(`https://${GetParentResourceName()}/teleport`, {
+                    x: x,
+                    y: y,
+                    z: z,
+                });
+            }
         });
 });
