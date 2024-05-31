@@ -8,7 +8,7 @@ ESX = exports["es_extended"]:getSharedObject()
 local function togglePosition()
     if not state then
         CreateThread(function()
-            while true do
+            while state == true do
                 Wait(0)
 
                 local playerId = PlayerPedId()
@@ -21,7 +21,8 @@ local function togglePosition()
                     y = playerCoords.y,
                     z = playerCoords.z,
                     heading = playerHeading,
-                    state = state
+                    state = state,
+                    hudPosition = Config.HUD_Position
                 })
             end
         end)
@@ -78,11 +79,12 @@ if Config.Enable_Command then
     RegisterCommand('focusHUD', function()
         focusHUD()
     end)
-    RegisterKeyMapping('focusHUD', 'Focus NUI for position panel', 'keyboard', 'DIVIDE')
+    RegisterKeyMapping('focusHUD', TranslateCap('focus_hud_key_description'), 'keyboard', Config.Keybind_Focus)
 
 
     RegisterCommand('togglePosition', function()
         togglePosition()
     end)
-    RegisterKeyMapping('togglePosition', 'Toggle position HUD', 'keyboard', 'PAGEDOWN')
+    RegisterKeyMapping('togglePosition', TranslateCap('toggle_hud_key_description'), 'keyboard', Config
+        .Keybind_ToggleHUD)
 end

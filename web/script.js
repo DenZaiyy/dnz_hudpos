@@ -2,10 +2,35 @@ window.addEventListener("message", (event) => {
     var data = event.data;
 
     if (data.type === "position") {
+        let hudPosition = document.getElementById("hud");
+
         document.getElementById("heading-output").textContent = data.heading;
         document.getElementById("pos-x-output").textContent = data.x;
         document.getElementById("pos-y-output").textContent = data.y;
         document.getElementById("pos-z-output").textContent = data.z;
+
+        if (data.hudPosition) {
+            if (data.hudPosition === "top-left") {
+                hudPosition.style.top = "0";
+                hudPosition.style.left = "0";
+            } else if (data.hudPosition === "top-right") {
+                hudPosition.style.top = "0";
+                hudPosition.style.right = "0";
+            } else if (data.hudPosition === "bottom-left") {
+                hudPosition.style.bottom = "0";
+                hudPosition.style.left = "0";
+            } else if (data.hudPosition === "bottom-right") {
+                hudPosition.style.bottom = "0";
+                hudPosition.style.right = "0";
+            } else if (data.hudPosition === "top-middle") {
+                hudPosition.style.top = "0";
+                hudPosition.style.left = "50%";
+                hudPosition.style.transform = "translateX(-50%)";
+            } else {
+                hudPosition.style.top = "0";
+                hudPosition.style.left = "0";
+            }
+        }
     }
 
     if (data.state) {
